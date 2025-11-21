@@ -10,6 +10,7 @@ interface Question {
   question: string;
   options: string[];
   answer: number;
+  canShuffle?: boolean;
 }
 
 const general: Question[] = [
@@ -114,7 +115,7 @@ const general: Question[] = [
     options: [
       "Amante del mate y los viajes",
       "Buscando a alguien que aguante mis chistes malos",
-      "Experto en asados y buen vino",
+      "Desarrollador de día, fiestero de noche",
       "Fanático de la tecnología y los videojuegos",
     ],
     answer: 3,
@@ -170,7 +171,7 @@ const general: Question[] = [
       "Que le mientan",
       "Que odien el fernet",
     ],
-    answer: 1,
+    answer: 3,
   },
   {
     question: "¿Cuál es la señal más fuerte de que Nico está enamorado?",
@@ -190,6 +191,7 @@ const general: Question[] = [
       "Que va a volver al gym",
       "Todo lo anterior",
     ],
+    canShuffle: false,
     answer: 4,
   },
   {
@@ -210,6 +212,7 @@ const general: Question[] = [
       "Decir 'no me voy a enganchar'",
       "Todas las anteriores",
     ],
+    canShuffle: false,
     answer: 4,
   },
   {
@@ -236,6 +239,10 @@ export default function Kahoot() {
 
   const [questions, setQuestions] = useState<Question[]>(() =>
     general.map((qq) => {
+      if (qq.canShuffle === false) {
+        return qq;
+      }
+
       const shuffledOptions = shuffle(qq.options);
       const originalCorrect = qq.options[qq.answer - 1];
       const newIndex = shuffledOptions.findIndex((o) => o === originalCorrect);

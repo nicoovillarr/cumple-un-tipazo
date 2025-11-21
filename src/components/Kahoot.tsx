@@ -143,6 +143,8 @@ export default function Kahoot() {
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
+  const [secondsLeft, setSecondsLeft] = useState(30);
+  const [muted, setMuted] = useState(false);
   const [selected, setSelected] = useState<number | null>(null);
   const [answers, setAnswers] = useState<
     { question: string; answer: string }[]
@@ -152,7 +154,42 @@ export default function Kahoot() {
   >([]);
   const [submitted, setSubmitted] = useState(false);
   const playerNameRef = useRef<HTMLInputElement>(null);
+  const soundtrackRef = useRef<HTMLAudioElement | null>(null);
+  const correctRef = useRef<HTMLAudioElement | null>(null);
+  const incorrectRef = useRef<HTMLAudioElement | null>(null);
   const q = questions[index];
+
+  useEffect(() => {
+    soundtrackRef.current = new Audio("/soundtrack.mp3");
+    soundtrackRef.current.loop = true;
+    correctRef.current = new Audio("/correct-answer.mp3");
+    incorrectRef.current = new Audio("/incorrect-answer.mp3");
+
+    try {
+      if (soundtrackRef.current) soundtrackRef.current.muted = muted;
+      if (correctRef.current) correctRef.current.muted = muted;
+      if (incorrectRef.current) incorrectRef.current.muted = muted;
+    } catch (e) {}
+
+    return () => {
+      try {
+        soundtrackRef.current?.pause();
+        soundtrackRef.current = null;
+        correctRef.current = null;
+        incorrectRef.current = null;
+      } catch (e) {
+        /* ignore */
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    try {
+      if (soundtrackRef.current) soundtrackRef.current.muted = muted;
+      if (correctRef.current) correctRef.current.muted = muted;
+      if (incorrectRef.current) incorrectRef.current.muted = muted;
+    } catch (e) {}
+  }, [muted]);
 
   const handleAnswer = (optionIndex: number) => {
     if (selected !== null) return;
@@ -160,6 +197,15 @@ export default function Kahoot() {
 
     const isCorrect = optionIndex === q.answer;
     if (isCorrect) setScore((s) => s + 1);
+
+    try {
+      soundtrackRef.current?.pause();
+    } catch (e) {}
+
+    const effect = isCorrect ? correctRef.current : incorrectRef.current;
+    if (!muted) {
+      effect?.play().catch(() => {});
+    }
 
     setAnswers((a) => [
       ...a,
@@ -173,7 +219,35 @@ export default function Kahoot() {
       } else {
         setFinished(true);
       }
-    }, 1000);
+    }, 2000);
+  };
+
+  const handleTimeUp = () => {
+    if (selected !== null) return;
+
+    setSelected(0);
+
+    try {
+      soundtrackRef.current?.pause();
+    } catch (e) {}
+
+    if (!muted) {
+      incorrectRef.current?.play().catch(() => {});
+    }
+
+    setAnswers((a) => [
+      ...a,
+      { question: q.question, answer: "Sin responder" },
+    ]);
+
+    setTimeout(() => {
+      if (index + 1 < questions.length) {
+        setIndex((i) => i + 1);
+        setSelected(null);
+      } else {
+        setFinished(true);
+      }
+    }, 2500);
   };
 
   const getButtonClass = (i: number) => {
@@ -229,6 +303,41 @@ export default function Kahoot() {
       });
   }, []);
 
+  useEffect(() => {
+    if (finished) return;
+    setSecondsLeft(30);
+
+    try {
+      if (soundtrackRef.current) {
+        soundtrackRef.current.currentTime = 0;
+
+        soundtrackRef.current.play().catch(() => {});
+      }
+    } catch (e) {}
+
+    const id = setInterval(() => {
+      setSecondsLeft((s) => {
+        if (s <= 1) {
+          clearInterval(id);
+
+          setTimeout(() => handleTimeUp(), 50);
+          return 0;
+        }
+        return s - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(id);
+  }, [index, finished]);
+
+  useEffect(() => {
+    if (finished) {
+      try {
+        soundtrackRef.current?.pause();
+      } catch (e) {}
+    }
+  }, [finished]);
+
   if (finished) {
     return (
       <div className="p-6 text-center">
@@ -277,6 +386,22 @@ export default function Kahoot() {
 
   return (
     <div className="p-6 max-w-xl mx-auto">
+      <div className="flex items-center justify-between mb-4">
+        <div className="text-sm">
+          Tiempo: <strong>{secondsLeft}s</strong>
+        </div>
+        <div>
+          <button
+            type="button"
+            onClick={() => setMuted((m) => !m)}
+            className="px-3 py-1 rounded bg-gray-800/40 hover:bg-gray-800/60"
+            aria-pressed={muted}
+            aria-label={muted ? "Unmute" : "Mute"}
+          >
+            {muted ? "🔇" : "🔊"}
+          </button>
+        </div>
+      </div>
       <h2 className="text-2xl font-bold mb-4 text-center">{q.question}</h2>
 
       <div className="grid gap-3">
@@ -284,6 +409,7 @@ export default function Kahoot() {
           <button
             key={i}
             onClick={() => handleAnswer(i + 1)}
+            disabled={selected !== null}
             className={`p-3 rounded-xl text-white transition-all duration-300 ${getButtonClass(
               i + 1
             )} ${selected !== null ? "cursor-default" : "cursor-pointer"}`}

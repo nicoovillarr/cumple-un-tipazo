@@ -114,12 +114,10 @@ export default function ClickTheDrink() {
 
   const saveGame = () => {
     const inputName = playerNameRef.current?.value;
-    const name =
-      inputName && inputName.trim().length > 0
-        ? inputName.trim()
-        : prompt("Poné tu nombre cabezón:", "");
+    const name = inputName.trim();
 
-    if (!name || name.trim().length === 0) {
+    if (!name || name.length === 0) {
+      alert("Poné tu nombre cabezón")
       return;
     }
 
@@ -171,16 +169,14 @@ export default function ClickTheDrink() {
       </div>
 
       <aside
-        className={`absolute top-4 left-4 bg-purple-950 p-8 rounded-xl ${
-          showLeaderboard ? "" : "w-8 h-8 overflow-hidden"
-        } transition-all duration-500 ease-in-out`}
+        className={`absolute top-4 left-4 bg-purple-950 p-8 rounded-xl transition-all duration-500 ease-in-out`}
       >
         {!showLeaderboard && (
           <button
-            className="absolute text-4xl inset-0 -mt-2 cursor-pointer hover:scale-110 active:scale-90"
+            className="text-xl cursor-pointer hover:scale-110 active:scale-90"
             onClick={() => setShowLeaderboard(true)}
           >
-            +
+            Tabla de puntos!
           </button>
         )}
 

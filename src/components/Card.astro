@@ -1,0 +1,20 @@
+---
+interface Props {
+  className: string;
+  title: string;
+  href: string;
+}
+
+const { className, title, href } = Astro.props;
+---
+
+<a
+  href={href}
+  class={`block p-6 max-w-sm rounded-lg text-center ${className}`}
+>
+  <h5
+    class="text-2xl font-bold tracking-tight"
+  >
+    {title}
+  </h5>
+</a>

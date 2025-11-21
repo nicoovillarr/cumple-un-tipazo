@@ -1,16 +1,23 @@
 ---
-
+import Layout from "../components/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Card from "../components/Card.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title="Welcome to Astro"
+  description="This is the homepage of my Astro site"
+>
+  <Hero />
+  <section class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+    <Card
+			className="flex-1 bg-white/10 hover:bg-white/20 transition"
+			title="🍷 CLICK THE DRINK"
+			href="games/click-the-drink" />
+
+		<Card
+			className="flex-1 bg-white/10 hover:bg-white/20 transition"
+			title="🧠 KAHOOT LOCO"
+			href="games/quiz" />
+  </section>
+</Layout>

@@ -7,7 +7,7 @@ const MAX_VOLUME = 0.5;
 
 export default function ClickTheDrink() {
   const [leaderboard, setLeaderboard] = useState<
-    { playerName: string; count: number }[]
+    { playerName: string; strike: number }[]
   >([]);
 
   const playerNameRef = useRef<HTMLInputElement | null>(null);
@@ -134,8 +134,8 @@ export default function ClickTheDrink() {
         if (res.success) {
           alert(`Racha de ${strike} puntos guardados para ${name}!`);
           setLeaderboard((prev) =>
-            [...prev, { playerName: name.trim(), count: strike }]
-              .sort((a, b) => b.count - a.count)
+            [...prev, { playerName: name.trim(), strike: strike }]
+              .sort((a, b) => b.strike - a.strike)
               .slice(0, 10)
           );
           setStrike(0);
@@ -242,7 +242,7 @@ export default function ClickTheDrink() {
                       : index == 2
                       ? "🥉"
                       : ""}{" "}
-                    {entry.playerName}: {entry.count}
+                    {entry.playerName}: {entry.strike}
                   </li>
                 ))}
               </ol>

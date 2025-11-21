@@ -43,7 +43,7 @@ export const getLeaderboardClickTheDrink = async (
   const db = getFirestore(app);
   const clickTheDrinkScoresRef = db
     .collection("clickTheDrinkScores")
-    .orderBy("count", "desc")
+    .orderBy("strike", "desc")
     .limit(limit);
   const snapshot = await clickTheDrinkScoresRef.get();
 

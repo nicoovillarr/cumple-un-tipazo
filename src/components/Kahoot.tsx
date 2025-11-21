@@ -119,6 +119,27 @@ const general: Question[] = [
 ];
 
 export default function Kahoot() {
+  const shuffle = <T,>(arr: T[]) => {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  };
+
+  const [questions, setQuestions] = useState<Question[]>(() =>
+    general.map((qq) => {
+      const shuffledOptions = shuffle(qq.options);
+      const originalCorrect = qq.options[qq.answer - 1];
+      const newIndex = shuffledOptions.findIndex((o) => o === originalCorrect);
+      return {
+        ...qq,
+        options: shuffledOptions,
+        answer: newIndex >= 0 ? newIndex + 1 : qq.answer,
+      } as Question;
+    })
+  );
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
@@ -131,7 +152,7 @@ export default function Kahoot() {
   >([]);
   const [submitted, setSubmitted] = useState(false);
   const playerNameRef = useRef<HTMLInputElement>(null);
-  const q = general[index];
+  const q = questions[index];
 
   const handleAnswer = (optionIndex: number) => {
     if (selected !== null) return;
@@ -146,7 +167,7 @@ export default function Kahoot() {
     ]);
 
     setTimeout(() => {
-      if (index + 1 < general.length) {
+      if (index + 1 < questions.length) {
         setIndex((i) => i + 1);
         setSelected(null);
       } else {
@@ -175,7 +196,7 @@ export default function Kahoot() {
     const gameData = {
       playerName,
       score,
-      total: general.length,
+      total: questions.length,
       answers,
     };
 
@@ -213,7 +234,7 @@ export default function Kahoot() {
       <div className="p-6 text-center">
         <h1 className="text-3xl font-bold mb-4">🎉 ¡Fin del juego! 🎉</h1>
         <p className="text-xl">
-          Tu puntaje: <strong>{score}</strong> / {general.length}
+          Tu puntaje: <strong>{score}</strong> / {questions.length}
         </p>
 
         <div className="mt-6 text-left max-w-2xl mx-auto">

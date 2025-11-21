@@ -13,6 +13,8 @@ interface Question {
   canShuffle?: boolean;
 }
 
+const MAX_TIME_PER_QUESTION = 30;
+
 const general: Question[] = [
   {
     question: "¿Cuál es mi nombre completo?",
@@ -103,9 +105,9 @@ const general: Question[] = [
     question: "¿Cómo se llaman mis gatos?",
     options: [
       "Jueza y Abogado",
-      "Gris y Negro",
+      "Fiscal y Abogado",
       "Nicki y Nicole",
-      "Pedro y Pedra",
+      "Jueza y Policía",
     ],
     answer: 1,
   },
@@ -127,7 +129,7 @@ const general: Question[] = [
       "Viajar a Grecia",
       "Más de 120kg en sentadillas",
     ],
-    answer: 3,
+    answer: 1,
   },
   {
     question: "¿Cuántos sustos de embarazo tuve?",
@@ -151,7 +153,7 @@ const general: Question[] = [
   },
   {
     question: "¿Cuántos años cumplo?",
-    options: ["24", "25", "25", "31"],
+    options: ["24", "25", "26", "31"],
     answer: 2,
   },
   {
@@ -170,7 +172,7 @@ const general: Question[] = [
       "Comprar una PC",
       "Irme de viaje",
       "Comprar terrenos",
-      "Renunciar po Slack",
+      "Renunciar por Slack",
     ],
     answer: 2,
   },
@@ -205,11 +207,11 @@ export default function Kahoot() {
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
-  const [secondsLeft, setSecondsLeft] = useState(30);
+  const [secondsLeft, setSecondsLeft] = useState(MAX_TIME_PER_QUESTION);
   const [muted, setMuted] = useState(false);
   const [selected, setSelected] = useState<number | null>(null);
   const [answers, setAnswers] = useState<
-    { question: string; answer: string }[]
+    { question: string; answer: string; usedTime: number; isCorrect: boolean }[]
   >([]);
   const [leaderboard, setLeaderboard] = useState<
     { playerName: string; score: number }[]
@@ -271,7 +273,12 @@ export default function Kahoot() {
 
     setAnswers((a) => [
       ...a,
-      { question: q.question, answer: q.options[optionIndex - 1] },
+      {
+        question: q.question,
+        answer: q.options[optionIndex - 1],
+        usedTime: MAX_TIME_PER_QUESTION - secondsLeft,
+        isCorrect,
+      },
     ]);
 
     setTimeout(() => {
@@ -299,7 +306,12 @@ export default function Kahoot() {
 
     setAnswers((a) => [
       ...a,
-      { question: q.question, answer: "Sin responder" },
+      {
+        question: q.question,
+        answer: "Sin responder",
+        usedTime: MAX_TIME_PER_QUESTION,
+        isCorrect: false,
+      },
     ]);
 
     setTimeout(() => {
@@ -367,7 +379,7 @@ export default function Kahoot() {
 
   useEffect(() => {
     if (finished) return;
-    setSecondsLeft(30);
+    setSecondsLeft(MAX_TIME_PER_QUESTION);
 
     try {
       if (soundtrackRef.current) {

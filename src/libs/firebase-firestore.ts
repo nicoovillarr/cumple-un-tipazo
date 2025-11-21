@@ -4,7 +4,12 @@ import { getFirestore } from "firebase-admin/firestore";
 export type KahootResult = {
   playerName: string;
   score: number;
-  answers: { question: string; answer: string }[];
+  answers: {
+    question: string;
+    answer: string;
+    usedTime: number;
+    isCorrect: boolean;
+  }[];
 };
 
 export type ClickTheDrinkResult = {

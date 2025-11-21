@@ -147,6 +147,7 @@ export default function ClickTheDrink() {
 
   return (
     <main className="w-screen h-screen overflow-hidden grid place-items-center">
+      <PartyEffects intensity={strike} />
       <div
         className={`relative transition-transform duration-100 ease-out select-none`}
         style={{
@@ -235,9 +236,6 @@ export default function ClickTheDrink() {
           </>
         )}
       </aside>
-
-      {/* 🔥 EFECTOS DE FIESTA 🔥 */}
-      <PartyEffects intensity={strike} />
     </main>
   );
 }

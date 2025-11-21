@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  background-color: black;
+}
+
 body {
   width: 100vw;
   overflow-x: hidden;

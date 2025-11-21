@@ -53,8 +53,11 @@ const general: Question[] = [
     ],
     answer: 4,
   },
+
+  // 🔥 Preguntas mejoradas / más divertidas
+
   {
-    question: "¿Qué hace Nikein cuando dice “1 traguito nomás”?",
+    question: "¿Qué hace Nico cuando dice '1 traguito nomás'?",
     options: [
       "Media botella después está hablando inglés fluido",
       "Termina contando la vez que quiso armar un servidor DNS en la casa",
@@ -75,9 +78,9 @@ const general: Question[] = [
   },
   {
     question:
-      "¿Cuál fue el red flag más grande que Nikein ignoró en una relación?",
+      "¿Cuál fue el red flag más grande que Nico ignoró en una relación?",
     options: [
-      "Le hablaba a su ex “por buena onda nomás”",
+      "Le hablaba a su ex 'por buena onda nomás'",
       "Que no le gustaba el asado",
       "Que no le gustaba viajar",
       "Que no le gustaba el mate",
@@ -86,7 +89,7 @@ const general: Question[] = [
   },
   {
     question:
-      "¿Cuál fue la peor decisión romántica que tomó Nikein después de dos tragos?",
+      "¿Cuál fue la peor decisión romántica que tomó Nico después de dos tragos?",
     options: [
       "Mandarle un mensaje a su ex",
       "Ir a buscar a su ex a la casa",
@@ -97,7 +100,7 @@ const general: Question[] = [
   },
   {
     question:
-      "¿Cuál es el motivo más probable por el que Nikein terminó una relación?",
+      "¿Cuál es el motivo más probable por el que Nico terminó una relación?",
     options: [
       "Falta de comunicación",
       "Demasiada comunicación",
@@ -107,7 +110,7 @@ const general: Question[] = [
     answer: 1,
   },
   {
-    question: "Si me hiciera un Tinder, ¿cuál sería mi bio?",
+    question: "Si Nico se hiciera un Tinder, ¿cuál sería su bio?",
     options: [
       "Amante del mate y los viajes",
       "Buscando a alguien que aguante mis chistes malos",
@@ -115,6 +118,109 @@ const general: Question[] = [
       "Fanático de la tecnología y los videojuegos",
     ],
     answer: 3,
+  },
+
+  // 🔥 NUEVAS PREGUNTAS PICANTES
+
+  {
+    question: "¿Qué hace Nico cuando dice 'hoy no tomo mucho'?",
+    options: [
+      "Se toma un agua mineral y se va a dormir temprano",
+      "Despierta en lo de un amigo con un fernet abierto",
+      "Compra hielo como para un casamiento",
+      "Termina dando consejos amorosos a desconocidos",
+    ],
+    answer: 3,
+  },
+  {
+    question: "¿Cuál es el toxic trait más fuerte de Nico?",
+    options: [
+      "Se desaparece como si tuviera modo fantasma",
+      "Se enamora más rápido que un proyecto que no compila",
+      "Discute como si fuera un PR de GitHub",
+      "Cree que puede arreglar a la gente como si fueran bugs",
+    ],
+    answer: 4,
+  },
+  {
+    question: "¿Cuál es la peor señal de que Nico está por volver con su ex?",
+    options: [
+      "Follow misterioso a las 03:27",
+      "Historia con canción triste",
+      "Un traguito 'tranqui'",
+      "Dice 'estoy bien, posta'",
+    ],
+    answer: 2,
+  },
+  {
+    question: "¿Cómo reacciona Nico cuando le dicen 'venite a la joda'?",
+    options: [
+      "Dice que no puede… y cae igual",
+      "Abre el fernet en plena call",
+      "Dice 'una horita más' y aparece 4 horas después",
+      "Cierra la laptop sin guardar",
+    ],
+    answer: 2,
+  },
+  {
+    question: "¿Qué es lo que más lo hace enojar en una relación?",
+    options: [
+      "Que respondan 'ok.'",
+      "Que le digan que 'es solo un jueguito'",
+      "Que le mientan",
+      "Que odien el fernet",
+    ],
+    answer: 1,
+  },
+  {
+    question: "¿Cuál es la señal más fuerte de que Nico está enamorado?",
+    options: [
+      "Deja de ghostear",
+      "Cocina algo que no sea arroz",
+      "No piensa en su ex por 72 horas",
+      "Mira una peli sin abrir VSCode",
+    ],
+    answer: 1,
+  },
+  {
+    question: "¿Qué promete Nico cuando está borracho?",
+    options: [
+      "Que va a cambiar",
+      "Que va a emprender 4 empresas nuevas",
+      "Que va a volver al gym",
+      "Todo lo anterior",
+    ],
+    answer: 4,
+  },
+  {
+    question: "¿Qué hace Nico cuando está triste?",
+    options: [
+      "Habla con un amigo",
+      "Compra un gadget innecesario",
+      "Reinstala su vida como si fuera Windows",
+      "Reinstala Tinder 'para ver qué onda'",
+    ],
+    answer: 1,
+  },
+  {
+    question: "¿Cuál es el hobby más peligroso de Nico?",
+    options: [
+      "Tocar el código a las 3 am",
+      "Leer mensajes viejos",
+      "Decir 'no me voy a enganchar'",
+      "Todas las anteriores",
+    ],
+    answer: 4,
+  },
+  {
+    question: "¿Qué frase usaría Nico para chamuyar?",
+    options: [
+      "¿Tomamos un mate?",
+      "¿Querés ser mi variable constante?",
+      "Estás más linda que cuando te stalkeé ayer",
+      "Si te caigo bien sobrio, esperá a verme borracho",
+    ],
+    answer: 2,
   },
 ];
 
@@ -357,7 +463,7 @@ export default function Kahoot() {
             ref={playerNameRef}
             id="playerName"
             type="text"
-            placeholder="Nikein"
+            placeholder="Nico"
             className="mb-4 p-2 rounded w-full text-black placeholder:text-gray-400 bg-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600"
           />
           <button
@@ -370,7 +476,7 @@ export default function Kahoot() {
         </div>
 
         <div className="mt-10 max-w-md mx-auto text-left">
-          <h2 className="text-2xl font-bold mb-4">🏆 Leaderboard 🏆</h2>
+          <h2 className="text-2xl font-bold mb-4">🏆 Top</h2>
           <ol className="list-decimal list-inside">
             {leaderboard.map((entry, i) => (
               <li key={i} className="mb-2">

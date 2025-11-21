@@ -7,9 +7,9 @@ import {
 export const POST: APIRoute = async ({ request }) => {
   const body = await request.json();
 
-  const { playerName, count } = body;
+  const { playerName, strike } = body;
 
-  const ok = await saveClickTheDrink({ playerName, count });
+  const ok = await saveClickTheDrink({ playerName, strike });
 
   return new Response(JSON.stringify({ success: ok }), {
     status: 200,

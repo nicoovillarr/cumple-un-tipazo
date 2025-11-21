@@ -13,9 +13,6 @@ export default function ClickTheDrink() {
   const playerNameRef = useRef<HTMLInputElement | null>(null);
   const [showLeaderboard, setShowLeaderboard] = useState<boolean>(false);
 
-  const [count, setCount] = useState(0);
-  const [icons, setIcons] = useState<string[]>(["🍺", "🍷", "🍸", "🍹", "🍾"]);
-
   const [playQueue, setPlayQueue] = useState<number>(0);
   const [strike, setStrike] = useState<number>(0);
 
@@ -23,8 +20,9 @@ export default function ClickTheDrink() {
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const inactivityTimerRef = useRef<number | null>(null);
+  const resetRef = useRef<boolean>(false);
 
-  const strikeScaleClass = `scale-[${Math.min(1 + strike * 0.05, 5)}]`;
+  const icons = ["🍺", "🍷", "🍸", "🍹", "🍾"];
 
   const stopAudio = useCallback(() => {
     const audio = audioRef.current;
@@ -38,8 +36,9 @@ export default function ClickTheDrink() {
         clearTimeout(inactivityTimerRef.current);
         inactivityTimerRef.current = null;
       }
+
+      resetRef.current = true;
       console.log("Audio cortado por inactividad. Cola vaciada.");
-      setStrike(0);
     }
   }, []);
 
@@ -96,7 +95,12 @@ export default function ClickTheDrink() {
   }, []);
 
   const handleClick = () => {
-    setCount((c) => c + 1);
+    if (resetRef.current) {
+      resetRef.current = false;
+      setStrike(0);
+      return;
+    }
+
     setStrike((s) => s + 1);
     setPlayQueue((q) => q + 1);
 
@@ -123,14 +127,14 @@ export default function ClickTheDrink() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ playerName: name.trim(), count }),
+      body: JSON.stringify({ playerName: name.trim(), strike }),
     })
       .then((r) => r.json())
       .then((res) => {
         if (res.success) {
-          alert(`${count} puntos guardados para ${name}!`);
+          alert(`Racha de ${strike} puntos guardados para ${name}!`);
           setLeaderboard((prev) =>
-            [...prev, { playerName: name.trim(), count }]
+            [...prev, { playerName: name.trim(), count: strike }]
               .sort((a, b) => b.count - a.count)
               .slice(0, 10)
           );
@@ -146,26 +150,26 @@ export default function ClickTheDrink() {
 
   return (
     <main className="w-screen h-screen overflow-hidden grid place-items-center">
-      <PartyEffects intensity={strike} />
+      {!resetRef.current && <PartyEffects intensity={strike} />}
       <div
         className={`relative transition-transform duration-100 ease-out select-none`}
         style={{
-          scale: Math.min(1 + strike * 0.01, 5),
+          scale: resetRef.current ? 1 : Math.min(1 + strike * 0.01, 5),
         }}
       >
         <p
           className={`absolute -top-1 -right-1 text-xl font-bold aspect-square bg-white text-purple-600 grid place-items-center rounded-full ${
-            count < 10 ? "w-8" : "w-10"
+            strike < 10 ? "w-8" : "w-10"
           }`}
         >
-          {count}
+          {strike}
         </p>
 
         <button
           onClick={handleClick}
           className="text-8xl active:scale-95 hover:scale-110 transition-transform duration-150 focus:outline-none cursor-pointer"
         >
-          {icons[count % icons.length]}
+          {icons[strike % icons.length]}
         </button>
       </div>
 

@@ -9,12 +9,12 @@ export type KahootResult = {
 
 export type ClickTheDrinkResult = {
   playerName: string;
-  count: number;
+  strike: number;
 };
 
 export const saveClickTheDrink = async ({
   playerName,
-  count,
+  strike,
 }: ClickTheDrinkResult) => {
   if (!playerName || playerName.trim().length === 0) return false;
 
@@ -23,7 +23,7 @@ export const saveClickTheDrink = async ({
     const clickTheDrinkScoresRef = db.collection("clickTheDrinkScores");
     await clickTheDrinkScoresRef.add({
       playerName,
-      count,
+      strike,
     });
   } catch (error) {
     return false;
@@ -42,12 +42,12 @@ export const getLeaderboardClickTheDrink = async (
     .limit(limit);
   const snapshot = await clickTheDrinkScoresRef.get();
 
-  const results: { playerName: string; count: number }[] = [];
+  const results: { playerName: string; strike: number }[] = [];
   snapshot.forEach((doc) => {
     const data = doc.data();
     results.push({
       playerName: data.playerName,
-      count: data.count,
+      strike: data.strike,
     });
   });
 

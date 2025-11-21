@@ -493,7 +493,7 @@ export default function Kahoot() {
           </button>
         ))}
         <p className="w-full text-center font-bold">
-          {index} de {questions.length}
+          {index + 1} de {questions.length}
         </p>
       </div>
     </div>

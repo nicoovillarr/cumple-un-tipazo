@@ -54,9 +54,6 @@ const general: Question[] = [
     ],
     answer: 4,
   },
-
-  // 🔥 Preguntas mejoradas / más divertidas
-
   {
     question: "¿Qué hace Nico cuando dice '1 traguito nomás'?",
     options: [
@@ -120,9 +117,6 @@ const general: Question[] = [
     ],
     answer: 3,
   },
-
-  // 🔥 NUEVAS PREGUNTAS PICANTES
-
   {
     question: "¿Qué hace Nico cuando dice 'hoy no tomo mucho'?",
     options: [
@@ -132,16 +126,6 @@ const general: Question[] = [
       "Termina dando consejos amorosos a desconocidos",
     ],
     answer: 3,
-  },
-  {
-    question: "¿Cuál es el toxic trait más fuerte de Nico?",
-    options: [
-      "Se desaparece como si tuviera modo fantasma",
-      "Se enamora más rápido que un proyecto que no compila",
-      "Discute como si fuera un PR de GitHub",
-      "Cree que puede arreglar a la gente como si fueran bugs",
-    ],
-    answer: 4,
   },
   {
     question: "¿Cuál es la peor señal de que Nico está por volver con su ex?",
@@ -164,16 +148,6 @@ const general: Question[] = [
     answer: 2,
   },
   {
-    question: "¿Qué es lo que más lo hace enojar en una relación?",
-    options: [
-      "Que respondan 'ok.'",
-      "Que le digan que 'es solo un jueguito'",
-      "Que le mientan",
-      "Que odien el fernet",
-    ],
-    answer: 3,
-  },
-  {
     question: "¿Cuál es la señal más fuerte de que Nico está enamorado?",
     options: [
       "Deja de ghostear",
@@ -187,7 +161,7 @@ const general: Question[] = [
     question: "¿Qué promete Nico cuando está borracho?",
     options: [
       "Que va a cambiar",
-      "Que va a emprender 4 empresas nuevas",
+      "Que va a hacerse millonario",
       "Que va a volver al gym",
       "Todo lo anterior",
     ],
@@ -198,7 +172,7 @@ const general: Question[] = [
     question: "¿Qué hace Nico cuando está triste?",
     options: [
       "Habla con un amigo",
-      "Compra un gadget innecesario",
+      "Hace una bolucompra",
       "Reinstala su vida como si fuera Windows",
       "Reinstala Tinder 'para ver qué onda'",
     ],
@@ -515,6 +489,7 @@ export default function Kahoot() {
           </button>
         </div>
       </div>
+
       <h2 className="text-2xl font-bold mb-4 text-center">{q.question}</h2>
 
       <div className="grid gap-3">
@@ -530,6 +505,9 @@ export default function Kahoot() {
             {opt}
           </button>
         ))}
+        <p className="w-full text-center font-bold">
+          {index} de {questions.length}
+        </p>
       </div>
     </div>
   );

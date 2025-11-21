@@ -11,7 +11,7 @@ export default function ClickTheDrink() {
   >([]);
 
   const playerNameRef = useRef<HTMLInputElement | null>(null);
-  const [showLeaderboard, setShowLeaderboard] = useState<boolean>(true);
+  const [showLeaderboard, setShowLeaderboard] = useState<boolean>(false);
 
   const [count, setCount] = useState(0);
   const [icons, setIcons] = useState<string[]>(["🍺", "🍷", "🍸", "🍹", "🍾"]);

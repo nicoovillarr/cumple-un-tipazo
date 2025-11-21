@@ -75,18 +75,23 @@ const general: Question[] = [
     answer: 1,
   },
   {
+    question: "¿Dónde estudié en el liceo?",
+    options: [
+      "Sagrada Familia",
+      "Corazón de María",
+      "Colegio Inglés",
+      "Colegio Seminario",
+    ],
+    answer: 1,
+  },
+  {
     question: "¿Cuál es mi helado favorito?",
     options: ["Dulce de leche", "Chocolate", "Vainilla", "Frutilla"],
     answer: 1,
   },
   {
     question: "¿Cuál fue mi primer trabajo?",
-    options: [
-      "Inetsat",
-      "Kaizen",
-      "TCS",
-      "Globant"
-    ],
+    options: ["Inetsat", "Kaizen", "TCS", "Globant"],
     answer: 1,
   },
   {
@@ -100,35 +105,18 @@ const general: Question[] = [
       "Jueza y Abogado",
       "Gris y Negro",
       "Nicki y Nicole",
-      "Pedro y Pedra"
+      "Pedro y Pedra",
     ],
     answer: 1,
   },
   {
     question: "¿Por qué mi perra Megan se llama así?",
-    options: [
-      "Transformers",
-      "Drake y Josh",
-      "The Blacklist",
-      "Hércules"
-    ],
+    options: ["Transformers", "Drake y Josh", "The Blacklist", "Hércules"],
     answer: 2,
   },
   {
-    question: "¿Cuál es mi videojuego favorito?",
-    options: [
-      "The Legend of Zelda: Ocarina of Time",
-    ],
-    answer: 1,
-  },
-  {
     question: "¿Qué serie no terminé?",
-    options: [
-      "Breaking Bad",
-      "Bojack Horseman",
-      "The Walking Dead",
-      "Lost"
-    ],
+    options: ["Breaking Bad", "Bojack Horseman", "The Walking Dead", "Lost"],
     answer: 3,
   },
   {
@@ -137,7 +125,7 @@ const general: Question[] = [
       "Saltar en paracaídas",
       "Tatuarme",
       "Viajar a Grecia",
-      "Más de 120kg en sentadillas"
+      "Más de 120kg en sentadillas",
     ],
     answer: 3,
   },
@@ -148,31 +136,41 @@ const general: Question[] = [
   },
   {
     question: "¿A quién de los invitados le hice una página web?",
-    options: [
-      "Franco",
-      "Caro",
-      "Pantu",
-      "Seba y Agus"
-    ],
+    options: ["Franco", "Caro", "Pantu", "Seba y Agus"],
     answer: 4,
   },
   {
     question: "¿Qué comida pediría toda mi vida sin aburrirme?",
-    options: [
-      "Pizza",
-      "Sushi",
-      "Hamburguesa",
-      "Pasta"
-    ],
+    options: ["Pizza", "Sushi", "Hamburguesa", "Pasta"],
     answer: 3,
   },
   {
     question: "¿A dónde fui en mi último viaje?",
+    options: ["Brasil", "Argentina", "España", "Francia"],
+    answer: 2,
+  },
+  {
+    question: "¿Cuántos años cumplo?",
+    options: ["24", "25", "25", "31"],
+    answer: 2,
+  },
+  {
+    question: "¿Cuál es mi mayor enemigo?",
+    options: ["El calor", "El LoL", "Estudiar", "Trabajar"],
+    answer: 1,
+  },
+  {
+    question: "¿A dónde quiero viajar si o si?",
+    options: ["Japón", "Australia", "Nueva Zelanda", "Canadá"],
+    answer: 4,
+  },
+  {
+    question: "¿Qué es lo primero que haría si fuera millonario?",
     options: [
-      "Brasil",
-      "Argentina",
-      "España",
-      "Francia",
+      "Comprar una PC",
+      "Irme de viaje",
+      "Comprar terrenos",
+      "Renunciar po Slack",
     ],
     answer: 2,
   },

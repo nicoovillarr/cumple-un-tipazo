@@ -138,6 +138,11 @@ export default function ClickTheDrink() {
               .sort((a, b) => b.count - a.count)
               .slice(0, 10)
           );
+          setStrike(0);
+          if (playerNameRef.current) {
+            playerNameRef.current.value = "";
+          }
+          resetRef.current = false;
         } else {
           alert("Error al guardar el puntaje. Intentá de nuevo más tarde.");
         }
@@ -171,6 +176,14 @@ export default function ClickTheDrink() {
         >
           {icons[strike % icons.length]}
         </button>
+
+        {resetRef.current &&
+          strike >
+            0 && (
+              <p className="absolute mt-4 text-center font-semibold text-xl">
+                Guardá tu racha arriba a la izquierda
+              </p>
+            )}
       </div>
 
       <aside

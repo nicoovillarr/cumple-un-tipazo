@@ -17,6 +17,22 @@ const { title, description } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+
+    <meta property="og:title" content={title} />
+    <meta
+      property="og:description"
+      content={description ??
+        "Entrá y jugá los dos juegos para sumar puntos 👀🔥"}
+    />
+    <meta property="og:image" content="https://nicolasvillar.com/preview.jpg" />
+    <meta property="og:url" content="https://nicolasvillar.com" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://nicolasvillar.com/preview.jpg"
+    />
   </head>
   <body
     class="bg-linear-to-br from-[#290529] to-[#140414] min-h-screen text-white p-4 overflow-x-hidden"

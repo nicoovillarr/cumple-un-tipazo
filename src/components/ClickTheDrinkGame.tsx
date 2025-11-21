@@ -3,7 +3,7 @@ import PartyEffects from "./PartyEffects";
 
 const SONG_URL = "/satisfaction.wav";
 const INACTIVITY_TIMEOUT_MS = 500;
-const MAX_VOLUME = 1;
+const MAX_VOLUME = 0.5;
 
 export default function ClickTheDrink() {
   const [leaderboard, setLeaderboard] = useState<

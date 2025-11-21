@@ -55,147 +55,124 @@ const general: Question[] = [
     answer: 4,
   },
   {
-    question: "¿Qué hace Nico cuando dice '1 traguito nomás'?",
+    question: "¿Cuál de estos idiomas NO hablo?",
+    options: ["Inglés", "Español", "Francés", "Alemán"],
+    answer: 4,
+  },
+  {
+    question: "¿En qué tier estoy del LoL?",
+    options: ["Hierro", "Bronce", "Platino", "Grand Master"],
+    answer: 1,
+  },
+  {
+    question: "¿Dónde estudié en la primaria?",
     options: [
-      "Media botella después está hablando inglés fluido",
-      "Termina contando la vez que quiso armar un servidor DNS en la casa",
-      "Se convierte en Akali en la vida real",
-      "Pide un Uber a Cancún",
+      "Sagrada Familia",
+      "Corazón de María",
+      "Colegio Inglés",
+      "Colegio Seminario",
+    ],
+    answer: 1,
+  },
+  {
+    question: "¿Cuál es mi helado favorito?",
+    options: ["Dulce de leche", "Chocolate", "Vainilla", "Frutilla"],
+    answer: 1,
+  },
+  {
+    question: "¿Cuál fue mi primer trabajo?",
+    options: [
+      "Inetsat",
+      "Kaizen",
+      "TCS",
+      "Globant"
+    ],
+    answer: 1,
+  },
+  {
+    question: "¿Cuántas materias me llevé en primero de liceo?",
+    options: ["0", "1", "2", "3"],
+    answer: 1,
+  },
+  {
+    question: "¿Cómo se llaman mis gatos?",
+    options: [
+      "Jueza y Abogado",
+      "Gris y Negro",
+      "Nicki y Nicole",
+      "Pedro y Pedra"
+    ],
+    answer: 1,
+  },
+  {
+    question: "¿Por qué mi perra Megan se llama así?",
+    options: [
+      "Transformers",
+      "Drake y Josh",
+      "The Blacklist",
+      "Hércules"
     ],
     answer: 2,
   },
   {
-    question: "¿Cuál sería el peor castigo del Kahoot?",
+    question: "¿Cuál es mi videojuego favorito?",
     options: [
-      "Cantar una canción de cuna a Nico",
-      "Shot de fernet sin coca",
-      "Karaoke acapella de una canción de reguetón",
-      "Contarle un chiste malo a Nico",
+      "The Legend of Zelda: Ocarina of Time",
     ],
     answer: 1,
   },
   {
-    question:
-      "¿Cuál fue el red flag más grande que Nico ignoró en una relación?",
+    question: "¿Qué serie no terminé?",
     options: [
-      "Le hablaba a su ex 'por buena onda nomás'",
-      "Que no le gustaba el asado",
-      "Que no le gustaba viajar",
-      "Que no le gustaba el mate",
-    ],
-    answer: 1,
-  },
-  {
-    question:
-      "¿Cuál fue la peor decisión romántica que tomó Nico después de dos tragos?",
-    options: [
-      "Mandarle un mensaje a su ex",
-      "Ir a buscar a su ex a la casa",
-      "Terminar la noche con alguien que conoció esa misma noche",
-      "Decir que estaba bien cuando claramente no lo estaba",
-    ],
-    answer: 1,
-  },
-  {
-    question:
-      "¿Cuál es el motivo más probable por el que Nico terminó una relación?",
-    options: [
-      "Falta de comunicación",
-      "Demasiada comunicación",
-      "Diferencias irreconciliables en gustos musicales",
-      "Que no le gustaba el asado",
-    ],
-    answer: 1,
-  },
-  {
-    question: "Si Nico se hiciera un Tinder, ¿cuál sería su bio?",
-    options: [
-      "Amante del mate y los viajes",
-      "Buscando a alguien que aguante mis chistes malos",
-      "Desarrollador de día, fiestero de noche",
-      "Fanático de la tecnología y los videojuegos",
+      "Breaking Bad",
+      "Bojack Horseman",
+      "The Walking Dead",
+      "Lost"
     ],
     answer: 3,
   },
   {
-    question: "¿Qué hace Nico cuando dice 'hoy no tomo mucho'?",
+    question: "¿Cuál de estas NO hice nunca?",
     options: [
-      "Se toma un agua mineral y se va a dormir temprano",
-      "Despierta en lo de un amigo con un fernet abierto",
-      "Compra hielo como para un casamiento",
-      "Termina dando consejos amorosos a desconocidos",
+      "Saltar en paracaídas",
+      "Tatuarme",
+      "Viajar a Grecia",
+      "Más de 120kg en sentadillas"
     ],
     answer: 3,
   },
   {
-    question: "¿Cuál es la peor señal de que Nico está por volver con su ex?",
-    options: [
-      "Follow misterioso a las 03:27",
-      "Historia con canción triste",
-      "Un traguito 'tranqui'",
-      "Dice 'estoy bien, posta'",
-    ],
+    question: "¿Cuántos sustos de embarazo tuve?",
+    options: ["0", "1", "2", "3"],
     answer: 2,
   },
   {
-    question: "¿Cómo reacciona Nico cuando le dicen 'venite a la joda'?",
+    question: "¿A quién de los invitados le hice una página web?",
     options: [
-      "Dice que no puede… y cae igual",
-      "Abre el fernet en plena call",
-      "Dice 'una horita más' y aparece 4 horas después",
-      "Cierra la laptop sin guardar",
+      "Franco",
+      "Caro",
+      "Pantu",
+      "Seba y Agus"
     ],
-    answer: 2,
-  },
-  {
-    question: "¿Cuál es la señal más fuerte de que Nico está enamorado?",
-    options: [
-      "Deja de ghostear",
-      "Cocina algo que no sea arroz",
-      "No piensa en su ex por 72 horas",
-      "Mira una peli sin abrir VSCode",
-    ],
-    answer: 1,
-  },
-  {
-    question: "¿Qué promete Nico cuando está borracho?",
-    options: [
-      "Que va a cambiar",
-      "Que va a hacerse millonario",
-      "Que va a volver al gym",
-      "Todo lo anterior",
-    ],
-    canShuffle: false,
     answer: 4,
   },
   {
-    question: "¿Qué hace Nico cuando está triste?",
+    question: "¿Qué comida pediría toda mi vida sin aburrirme?",
     options: [
-      "Habla con un amigo",
-      "Hace una bolucompra",
-      "Reinstala su vida como si fuera Windows",
-      "Reinstala Tinder 'para ver qué onda'",
+      "Pizza",
+      "Sushi",
+      "Hamburguesa",
+      "Pasta"
     ],
-    answer: 1,
+    answer: 3,
   },
   {
-    question: "¿Cuál es el hobby más peligroso de Nico?",
+    question: "¿A dónde fui en mi último viaje?",
     options: [
-      "Tocar el código a las 3 am",
-      "Leer mensajes viejos",
-      "Decir 'no me voy a enganchar'",
-      "Todas las anteriores",
-    ],
-    canShuffle: false,
-    answer: 4,
-  },
-  {
-    question: "¿Qué frase usaría Nico para chamuyar?",
-    options: [
-      "¿Tomamos un mate?",
-      "¿Querés ser mi variable constante?",
-      "Estás más linda que cuando te stalkeé ayer",
-      "Si te caigo bien sobrio, esperá a verme borracho",
+      "Brasil",
+      "Argentina",
+      "España",
+      "Francia",
     ],
     answer: 2,
   },

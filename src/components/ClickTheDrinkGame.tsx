@@ -98,9 +98,6 @@ export default function ClickTheDrink() {
   const handleClick = () => {
     setCount((c) => c + 1);
     setStrike((s) => s + 1);
-
-    audioRef.current!.volume = Math.min(MAX_VOLUME, strike * 0.01);
-
     setPlayQueue((q) => q + 1);
 
     if (inactivityTimerRef.current) {
@@ -117,7 +114,7 @@ export default function ClickTheDrink() {
     const name = inputName.trim();
 
     if (!name || name.length === 0) {
-      alert("Poné tu nombre cabezón")
+      alert("Poné tu nombre cabezón");
       return;
     }
 
@@ -142,6 +139,10 @@ export default function ClickTheDrink() {
         }
       });
   };
+
+  useEffect(() => {
+    audioRef.current!.volume = Math.min(MAX_VOLUME, strike * 0.01);
+  }, [strike]);
 
   return (
     <main className="w-screen h-screen overflow-hidden grid place-items-center">
